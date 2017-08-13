@@ -2,7 +2,7 @@
   <head>
   <script type="text/javascript" src="validateCodeMelli.js"></script>
   <script type="text/javascript">
-    function initEventHandlers ()
+    function initialize ()
       {
       document.getElementById('validateButton').onclick = function()
       {
@@ -18,11 +18,9 @@
     }
   </script>
   </head>
-  <body onLoad="initEventHandlers">
-<form>
+  <body onoad="initialize()">
 <label>Code Melli Validator</label><br/>
 <input type="text" id="code" maxLength="10" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 13' />
 <input type="button" id="validateButton" value="validate"/>
-</form>
   </body>
   <html>
