@@ -1,0 +1,25 @@
+  <html>
+  <head>
+  <script type="text/javascript" src="validateCodeMelli.js"></script>
+  <script type="text/javascript">
+    document.getElementById('validateButton').onclick = function()
+    {
+      alert(validateCodeMelli(document.getElementById('code').value));
+    }
+    document.getElementById('code').onkeydown = function () 
+    {
+      if (event.keyCode == 13)
+      {
+        alert(validateCodeMelli(document.getElementById('code').value));  
+      }
+    }
+  </script>
+  </head>
+  <body>
+<form>
+<label>Code Melli Validator</label><br/>
+<input type="text" id="code" maxLength="10" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 13' />
+<input type="button" id="validateButton" value="validate"/>
+</form>
+  </body>
+  <html>
