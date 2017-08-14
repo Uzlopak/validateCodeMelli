@@ -1,17 +1,27 @@
-function validateCodeMelli(code)
+function validateCodeMelli(code, checks)
 {
+	var checks = checks ||
+	    {
+		    length : true,
+		    isNumeric : true,
+		    hasValidAreacode : true,
+		    isObviouslyWrongCode : true
+	    }; 
 	var checksum = 0;
 	var generatedChecksum = 0;
 	var rest = 0;
-	if (code.length != 10)
+	if (checks.length && code.length != 10)
 	{
 		return false;
 	}
-	if (isObviousWrongCode(code))
+	if (checks.isNumeric && /^\d{10}$/.test(code) == false) {
+		return false;
+	}
+	if (checks.isObviosulyWrongCode && isObviouslyWrongCode(code))
 	{
 		return false;
 	}
-	if (hasValidAreaCode(code) == false)
+	if (checks.hasValidAreaCode && hasValidAreaCode(code) == false)
 	{
 		return false;
 	}
@@ -28,7 +38,7 @@ function validateCodeMelli(code)
 	return false;
 }
 
-function isObviousWrongCode(code)
+function isObviouslyWrongCode(code)
 {
 	if (code.length != 10) {
 		throw ("Code-Length invalid")
@@ -65,8 +75,7 @@ function generateChecksum(code)
 }
 
 function hasValidAreaCode(code)
-{
-	
+{	
 	if (code.length != 10) {
 		throw ("Code-Length invalid");
 	}
