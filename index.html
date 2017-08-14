@@ -28,8 +28,8 @@
 		hasValidChecksum : document.getElementById("hasValidChecksum").checked
 	};
 	var isValid = validateCodeMelli(code, checks);
-	var area = areacodes[code.substr(0,3)];
-	var areaName = area[0] || '';
+	var area = areacodes[code.substr(0,3)] || ['','']
+	var areaName = area[0];
 	if (isValid == true) 
 	{
 		alert("The code is valid\nIt should be from: " + areaName);
@@ -45,12 +45,14 @@
 	<label>Code Melli Validator</label><br/>
 	<input type="text" id="code" maxLength="10" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 13' />
 	<input type="button" id="validateButton" value="validate"/>
-	  <br />
-	  <label for="length"><input type="checkbox" id="length" checked="checked"/>length</label>
-<label for="isNumeric"><input type="checkbox" id="isNumeric" checked="checked"/>isNumeric</label><br />
-<label for="hasValidAreacode"><input type="checkbox" id="hasValidAreacode" checked="checked"/>hasValidAreacode</label>
-<label for="isObviouslyWrongCode"><input type="checkbox" id="isObviouslyWrongCode" checked="checked"/>isObviouslyWrongCode</label><br />
-<label for="hasValidChecksum"><input type="checkbox" id="hasValidChecksum" checked="checked"/>hasValidChecksum</label>
+	<br />
+	<label for="length"><input type="checkbox" id="length" checked="checked"/>length</label>
+	<label for="isNumeric"><input type="checkbox" id="isNumeric" checked="checked"/>isNumeric</label><br />
+	<label for="hasValidAreacode"><input type="checkbox" id="hasValidAreacode" checked="checked"/>hasValidAreacode</label>
+	<label for="isObviouslyWrongCode"><input type="checkbox" id="isObviouslyWrongCode" checked="checked"/>isObviouslyWrongCode</label><br />
+	<label for="hasValidChecksum"><input type="checkbox" id="hasValidChecksum" checked="checked"/>hasValidChecksum</label><br />
+	
+	<small>No guarantee for completeness of the areacodelist</small>
 
   </body>
   <html>
