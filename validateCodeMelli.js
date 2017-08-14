@@ -17,7 +17,7 @@ function validateCodeMelli(code, checks)
 	if (checks.isNumeric && /^\d{10}$/.test(code) == false) {
 		return false;
 	}
-	if (checks.isObviosulyWrongCode && isObviouslyWrongCode(code))
+	if (checks.isObviouslyWrongCode && isObviouslyWrongCode(code))
 	{
 		return false;
 	}
