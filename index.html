@@ -1,19 +1,33 @@
   <html>
   <head>
   <script type="text/javascript" src="validateCodeMelli.js"></script>
+  <script type="text/javascript" src="areacodes.js"></script>
   <script type="text/javascript">
     function initialize ()
       {
       document.getElementById('validateButton').onclick = function()
       {
-        alert(validateCodeMelli(document.getElementById('code').value));
+          checkInput(document.getElementById('code').value);  
       }
       document.getElementById('code').onkeydown = function () 
       {
         if (event.keyCode == 13)
         {
-          alert(validateCodeMelli(document.getElementById('code').value));  
+          checkInput(document.getElementById('code').value);  
         }
+      }
+    }
+    function checkInput(code) 
+    {
+      var isValid = validateCodeMelli(code);
+      var area = areacodes[code.substr(0,3)];
+      if (isValid == true) 
+      {
+        alert("The code is valid\nIt should be from: " + area[0]);
+      }
+      else
+      {
+        alert("The code is invalid");
       }
     }
   </script>
