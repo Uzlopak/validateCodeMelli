@@ -7,7 +7,7 @@ function validateCodeMelli(code, checks)
 		    isNumeric : true,
 		    hasValidAreacode : true,
 		    isObviouslyWrongCode : true,
-		    checksum : true
+		    hasValidChecksum : true
 	    }; 
 	if (checks.length && code.length != 10)
 	{
@@ -24,7 +24,7 @@ function validateCodeMelli(code, checks)
 	{
 		result = false;
 	}
-	if (checks.checksum && hasValidChecksum(code) == false)
+	if (checks.hasValidChecksum && hasValidChecksum(code) == false)
 	{
 		result = false;
 	}
