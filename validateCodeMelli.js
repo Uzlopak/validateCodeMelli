@@ -33,10 +33,8 @@ function validateCodeMelli(code, checks)
 
 function isObviouslyWrongCode(code)
 {
-	if (code.length != 10) {
-		throw ("Code-Length invalid")
-	}
-	if (code == '0000000000' ||
+	if (
+		code == '0000000000' ||
 		code == '1111111111' ||
 		code == '2222222222' ||
 		code == '3333333333' ||
@@ -74,7 +72,7 @@ function hasValidChecksum(code)
 	var rest = 0;
 	
 	if (code.length != 10) {
-		throw ("Code-Length invalid");
+		return false;
 	}
 	generatedChecksum = generateChecksum(code.substring(0,9));
 	rest = generatedChecksum - parseInt(generatedChecksum / 11) * 11;
@@ -91,8 +89,8 @@ function hasValidChecksum(code)
 
 function hasValidAreaCode(code)
 {	
-	if (code.length != 10) {
-		throw ("Code-Length invalid");
+	if (code.length < 3) {
+		return false;
 	}
 	var areacode = code.substr(0,3);
 	return isValidAreaCode(areacode);
