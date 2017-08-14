@@ -19,32 +19,36 @@
     }
     function checkInput(code) 
     {
-      var checks = {
-		    length : document.getElementById("length").checked,
-		    isNumeric : document.getElementById("isNumeric").checked,
-		    hasValidAreacode : document.getElementById("hasValidAreacode").checked,
-		    isObviouslyWrongCode : document.getElementById("isObviouslyWrongCode").checked
-	    };
-      var isValid = validateCodeMelli(code, checks);
-      var area = areacodes[code.substr(0,3)];
-      if (isValid == true) 
-      {
-        alert("The code is valid\nIt should be from: " + area[0]);
-      }
-      else
-      {
-        alert("The code is invalid");
-      }
+	var checks = 
+	{
+		length : document.getElementById("length").checked,
+		isNumeric : document.getElementById("isNumeric").checked,
+		hasValidAreacode : document.getElementById("hasValidAreacode").checked,
+		isObviouslyWrongCode : document.getElementById("isObviouslyWrongCode").checked
+	};
+	var isValid = validateCodeMelli(code, checks);
+	var area = areacodes[code.substr(0,3)];
+	var areaName = area[0] || '';
+	if (isValid == true) 
+	{
+		alert("The code is valid\nIt should be from: " + areaName);
+	}
+	else
+	{
+		alert("The code is invalid");
+	}
     }
   </script>
   </head>
   <body onload="initialize()">
-<label>Code Melli Validator</label><br/>
-<input type="text" id="code" maxLength="10" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 13' />
-<label for="length"><input type="checkbox" id="length" checked="checked"/>length</label>
-<label for="isNumeric"><input type="checkbox" id="isNumeric" checked="checked"/>isNumeric</label>
-<label for="hasValidAreacode"><input type="checkbox" id="hasValidAreacode" checked="checked"/>hasValildAreacode</label>
+	<label>Code Melli Validator</label><br/>
+	<input type="text" id="code" maxLength="10" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 13' />
+	<input type="button" id="validateButton" value="validate"/>
+	  <br/>
+	  <label for="length"><input type="checkbox" id="length" checked="checked"/>length</label>
+<label for="isNumeric"><input type="checkbox" id="isNumeric" checked="checked"/>isNumeric</label><br/>
+<label for="hasValidAreacode"><input type="checkbox" id="hasValidAreacode" checked="checked"/>hasValidAreacode</label>
 <label for="isObviouslyWrongCode"><input type="checkbox" id="isObviouslyWrongCode" checked="checked"/>isObviouslyWrongCode</label>
-<input type="button" id="validateButton" value="validate"/>
+
   </body>
   <html>
