@@ -1,41 +1,34 @@
 function validateCodeMelli(code, checks)
 {
+	var result = true;
 	var checks = checks ||
 	    {
 		    length : true,
 		    isNumeric : true,
 		    hasValidAreacode : true,
-		    isObviouslyWrongCode : true
+		    isObviouslyWrongCode : true,
+		    checksum : true
 	    }; 
-	var checksum = 0;
-	var generatedChecksum = 0;
-	var rest = 0;
 	if (checks.length && code.length != 10)
 	{
-		return false;
+		result = false;
 	}
 	if (checks.isNumeric && /^\d{10}$/.test(code) == false) {
-		return false;
+		result = false;
 	}
 	if (checks.isObviouslyWrongCode && isObviouslyWrongCode(code))
 	{
-		return false;
+		result = false;
 	}
 	if (checks.hasValidAreaCode && hasValidAreaCode(code) == false)
 	{
-		return false;
+		result = false;
 	}
-	generatedChecksum = generateChecksum(code.substring(0,9));
-	rest = generatedChecksum - parseInt(generatedChecksum / 11) * 11;
-	checksum = code.charAt(9);
-	
-	if ((rest == 0 && checksum == 0) ||
-		(rest == 1 && checksum == 1) ||
-		(rest > 1 && checksum == 11 - rest))
+	if (checks.checksum && hasValidChecksum(code) == false)
 	{
-		return true;
+		result = false;
 	}
-	return false;
+	return result;
 }
 
 function isObviouslyWrongCode(code)
@@ -72,6 +65,28 @@ function generateChecksum(code)
 		generatedChecksum += parseInt(code.charAt(i)) * (10 - i);
 	}
 	return generatedChecksum;
+}
+
+function hasValidChecksum(code)
+{	
+	var checksum = 0;
+	var generatedChecksum = 0;
+	var rest = 0;
+	
+	if (code.length != 10) {
+		throw ("Code-Length invalid");
+	}
+	generatedChecksum = generateChecksum(code.substring(0,9));
+	rest = generatedChecksum - parseInt(generatedChecksum / 11) * 11;
+	checksum = code.charAt(9);
+
+	if ((rest == 0 && checksum == 0) ||
+		(rest == 1 && checksum == 1) ||
+		(rest > 1 && checksum == 11 - rest))
+	{
+		return true;
+	}
+	return false;	
 }
 
 function hasValidAreaCode(code)
