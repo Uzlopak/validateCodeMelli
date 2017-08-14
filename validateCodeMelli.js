@@ -11,7 +11,10 @@ function validateCodeMelli(code)
 	{
 		return false;
 	}
-	
+	if (hasValidAreaCode(code) == false)
+	{
+		return false;
+	}
 	generatedChecksum = generateChecksum(code.substring(0,9));
 	rest = generatedChecksum - parseInt(generatedChecksum / 11) * 11;
 	checksum = code.charAt(9);
@@ -60,3 +63,21 @@ function generateChecksum(code)
 	}
 	return generatedChecksum;
 }
+
+function hasValidAreaCode(code)
+{
+	
+	if (code.length != 10) {
+		throw ("Code-Length invalid");
+	}
+	var areacode = code.substr(0,3);
+	return isValidAreaCode(areacode);
+}
+
+if (typeof isValidAreaCode == "undefined") {
+	var isValidAreaCode = function ()
+	{
+		return true;
+	}
+}
+
