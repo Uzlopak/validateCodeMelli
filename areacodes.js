@@ -1,5 +1,4 @@
-var city_codes = 
-	var areacodes = 
+var areacodes = 
   {
 	'001' : ['تهران','تهران مرکزی'],
 	'002' : ['تهران','تهران مرکزی'],
