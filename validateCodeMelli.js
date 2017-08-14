@@ -74,7 +74,9 @@ function hasValidAreaCode(code)
 	return isValidAreaCode(areacode);
 }
 
-if (typeof isValidAreaCode == "undefined") {
+//dummy function if areacodes.js is not loaded
+if (typeof isValidAreaCode == "undefined")
+{
 	var isValidAreaCode = function ()
 	{
 		return true;
