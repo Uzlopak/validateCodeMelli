@@ -6,5 +6,7 @@ Original Validator Code taken from tak.mfa.ir
 
 Test it here: https://arasabbasi.github.io/validateCodeMelli/
 
-If you need a code check with more features look at :)
+If you need a code check with more features and direct useable for nodejs look at
 https://github.com/fandogh/codemeli/
+
+:)
