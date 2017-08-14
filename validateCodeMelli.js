@@ -13,7 +13,7 @@ function validateCodeMelli(code, checks)
 	{
 		result = false;
 	}
-	if (checks.isNumeric && /^\d{10}$/.test(code) == false) {
+	if (checks.isNumeric && /^\d+$/.test(code) == false) {
 		result = false;
 	}
 	if (checks.isObviouslyWrongCode && isObviouslyWrongCode(code))
