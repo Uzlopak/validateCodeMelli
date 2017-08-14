@@ -591,4 +591,17 @@ var areacodes =
 	'730' : ['خوزستان','لالی'],
 	'731' : ['اردبیل','ارشق'],
 	'732' : ['بوشهر','دلوار']
+};
+
+var isValidAreaCode = function (areacodeToCheck)
+{
+	var result = true;
+	if (areacodeToCheck.length != 3)
+	{
+		result = false;
+	}
+	if (typeof areacodes[areacodeToCheck] == "undefined") {
+		result = false;
+	}
+	return result;
 }
